@@ -2,7 +2,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class BasePage:
-    base_url = 'https://magento.softwaretestingboard.com'
+    base_url = 'http://testshop.qa-practice.com/'
     page_url = None
 
     def __init__(self, driver: WebDriver):
