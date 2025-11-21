@@ -1,26 +1,28 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pytest
-from pages.desks_page import SalePage
-from pages.cart_page import CustomerLogin
+from time import sleep
+from pages.home_page import HomePage
+from pages.cart_page import CartPage
 
 
 @pytest.fixture()
 def driver():
     options = Options()
     options.add_argument("--headless")
-    #options.add_argument('--no-sandbox')
+    options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     chrome_driver = webdriver.Chrome(options=options)
+    # sleep(3)
     yield chrome_driver
     chrome_driver.quit()
 
 
 @pytest.fixture()
-def sale_page(driver):
-    return SalePage(driver)
+def home_page(driver):
+    return HomePage(driver)
 
 
 @pytest.fixture()
-def login_page(driver):
-    return CustomerLogin(driver)
+def cart_page(driver):
+    return CartPage(driver)
