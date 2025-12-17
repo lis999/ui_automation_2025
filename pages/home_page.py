@@ -9,6 +9,9 @@ class HomePage(BasePage):
         super().__init__(driver)
         self.locators = HomePageLocators  # Import locators
 
+    def wait_for_products(self):
+        self.find(self.locators.PRODUCT_CARDS)
+
     def click_sign_in(self):
         self.click_element(self.locators.SIGN_IN_LINK)
 

@@ -6,6 +6,7 @@ class TestHomePage:
 
     def test_home_page_loads_successfully(self, home_page):
         home_page.open_page()
+        home_page.wait_for_products()
         assert "testshop.qa-practice.com" in home_page.get_current_url()
         assert home_page.get_products_count() > 0
 
