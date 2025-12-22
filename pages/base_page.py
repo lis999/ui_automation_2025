@@ -1,4 +1,6 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
@@ -7,6 +9,7 @@ class BasePage:
 
     def __init__(self, driver: WebDriver):
         self.driver = driver
+        self.wait = WebDriverWait(driver, 10)
 
     def open_page(self):
         if self.page_url is not None:
@@ -36,3 +39,6 @@ class BasePage:
 
     def get_current_url(self):
         return self.driver.current_url
+
+    def wait_for_url_contains(self, text: str):
+        self.wait.until(EC.url_contains(text))

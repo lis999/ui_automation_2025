@@ -20,10 +20,12 @@ class HomePage(BasePage):
 
     def click_desks_category(self):
         self.click_element(self.locators.DESKS_CATEGORY)
+        self.wait_for_url_contains("desks")
 
     def search_product(self, product_name: str):
         self.enter_text(self.locators.SEARCH_INPUT, product_name)
         self.click_element(self.locators.SEARCH_BUTTON)
+        self.wait_for_url_contains("search")
 
     def get_products_count(self):
         return len(self.find_all(self.locators.PRODUCT_CARDS))

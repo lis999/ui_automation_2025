@@ -8,12 +8,12 @@ class HomePageLocators:
     CART_LINK = (By.CSS_SELECTOR, "i.fa.fa-shopping-cart.fa-stack")
 
     # Search elements
-    SEARCH_INPUT = (By.CSS_SELECTOR, "input[name='search']")
-    SEARCH_BUTTON = (By.CSS_SELECTOR, "button[type='submit'], i.oi.oi-search")
+    SEARCH_INPUT = (By.CSS_SELECTOR, 'form[action="/shop"] .oe_search_box')
+    SEARCH_BUTTON = (By.CSS_SELECTOR, 'button[class="btn oe_search_button btn btn-light"]')
 
     # Product elements
     PRODUCT_CARDS = (By.CSS_SELECTOR, "div.o_wsale_product_grid_wrapper")
 
     # Categories
-    DESKS_CATEGORY = (By.LINK_TEXT, "Desks")
+    DESKS_CATEGORY = (By.CSS_SELECTOR, 'li[data-link-href="/shop/category/desks-1"] .btn span')
     FURNITURES_CATEGORY = (By.LINK_TEXT, "Furnitures")

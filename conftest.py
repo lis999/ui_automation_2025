@@ -6,7 +6,7 @@ from pages.home_page import HomePage
 from pages.cart_page import CartPage
 
 
-@pytest.fixture()
+@pytest.fixture(scope="function")
 def driver():
     options = Options()
     #options.add_argument("--headless")

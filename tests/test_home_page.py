@@ -14,9 +14,10 @@ class TestHomePage:
         home_page.open_page()
         home_page.search_product("desk")
         current_url = home_page.get_current_url()
-        assert "s=desk" in current_url or "search" in current_url
+        assert "search=desk" in current_url
 
     def test_navigation_to_desks_category(self, home_page):
         home_page.open_page()
         home_page.click_desks_category()
-        assert "desks" in home_page.get_current_url().lower()
+        current_url = home_page.get_current_url()
+        assert "shop/category/desks" in current_url
