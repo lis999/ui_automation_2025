@@ -6,13 +6,14 @@ from pages.home_page import HomePage
 from pages.cart_page import CartPage
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture()
 def driver():
     options = Options()
     #options.add_argument("--headless")
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     chrome_driver = webdriver.Chrome(options=options)
+    chrome_driver.maximize_window()
     sleep(3)
     yield chrome_driver
     chrome_driver.quit()

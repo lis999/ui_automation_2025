@@ -20,7 +20,7 @@ class HomePage(BasePage):
 
     def click_desks_category(self):
         self.click_element(self.locators.DESKS_CATEGORY)
-        self.wait_for_url_contains("desks")
+        self.wait_for_url_contains("/shop")
 
     def search_product(self, product_name: str):
         self.enter_text(self.locators.SEARCH_INPUT, product_name)
