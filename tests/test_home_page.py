@@ -1,7 +1,3 @@
-import pytest
-from pages.home_page import HomePage
-
-
 class TestHomePage:
 
     def test_home_page_loads_successfully(self, home_page):

@@ -5,6 +5,7 @@ from time import sleep
 from pages.home_page import HomePage
 from pages.cart_page import CartPage
 from pages.desks_page import DesksPage
+from pages.product_office_page import ProductOfficePage
 
 
 @pytest.fixture()
@@ -33,3 +34,8 @@ def cart_page(driver):
 @pytest.fixture()
 def desks_page(driver):
     return DesksPage(driver)
+
+
+@pytest.fixture()
+def product_office_page(driver):
+    return ProductOfficePage(driver)

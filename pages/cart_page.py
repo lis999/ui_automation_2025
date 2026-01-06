@@ -1,9 +1,5 @@
 from selenium.webdriver.common.by import By
-
 from pages.base_page import BasePage
-
-
-header_title_loc = (By.TAG_NAME, 'h1')
 
 
 class CartPage(BasePage):

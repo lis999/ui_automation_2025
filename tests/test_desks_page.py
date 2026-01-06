@@ -1,7 +1,3 @@
-import pytest
-from pages.desks_page import DesksPage
-
-
 class TestDesksPage:
 
     def test_desks_category_page_opens(self, desks_page):
