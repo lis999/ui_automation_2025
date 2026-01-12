@@ -20,7 +20,7 @@ class BasePage:
         self.driver.get(f'{self.base_url}{self.page_url}')
 
     def find(self, locator: Locator):
-        return self.wait.until(EC.presence_of_element_located(locator))
+        return self.wait.until(EC.visibility_of_element_located(locator))
 
     def find_all(self, locator: Locator):
         self.wait.until(EC.presence_of_element_located(locator))

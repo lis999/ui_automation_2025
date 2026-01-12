@@ -1,24 +1,40 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import pytest
-from time import sleep
+import os
 from pages.home_page import HomePage
 from pages.cart_page import CartPage
 from pages.desks_page import DesksPage
 from pages.product_office_page import ProductOfficePage
 
 
-@pytest.fixture()
-def driver():
+def pytest_addoption(parser):
+    parser.addoption(
+        "--headless",
+        action="store_true",
+        default=False,
+        help="run in headless mode",
+    )
+
+@pytest.fixture(scope="function")
+def driver(request):
     options = Options()
-    #options.add_argument("--headless")
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    chrome_driver = webdriver.Chrome(options=options)
-    chrome_driver.maximize_window()
-    sleep(3)
-    yield chrome_driver
-    chrome_driver.quit()
+    is_headless = request.config.getoption("--headless") or os.getenv("CI")
+
+    if is_headless:
+        options.add_argument("--headless=new")
+        options.add_argument("--window-size=1920,1080")
+
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+
+    driver = webdriver.Chrome(options=options)
+
+    if not is_headless:
+        driver.maximize_window()
+
+    yield driver
+    driver.quit()
 
 
 @pytest.fixture()

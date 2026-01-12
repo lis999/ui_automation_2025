@@ -15,10 +15,8 @@ class TestProductOfficePage:
 
     def test_item_added_to_cart(self, product_office_page):
         product_office_page.open_page()
-        sleep(5)
         cart_before_update = int(product_office_page.check_quantity_in_cart() or 0)
         product_office_page.add_item_to_cart()
-        sleep(5)
         product_office_page.wait_cart_updated(cart_before_update)
         items_in_cart = int(product_office_page.check_quantity_in_cart() or 0)
         assert items_in_cart > cart_before_update
